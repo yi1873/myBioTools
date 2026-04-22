@@ -51,13 +51,13 @@ cargo build --release
 
 ```bash
 # 从表格中提取行
-myBioTools select -cls line -l geneid.txt -s table.txt  -o output.txt
+myBioTools select --cls line -l geneid.txt -s table.txt  -o output.txt
 
 # 从 FASTA 中提取序列
-myBioTools select -cls fa -l geneid.txt -s sequences.fasta -o selected.fasta
+myBioTools select --cls fa -l geneid.txt -s sequences.fasta -o selected.fasta
 
 # 按长度过滤 FASTA
-myBioTools select -cls onlyfa -s sequences.fasta --len 100 -o filtered.fasta
+myBioTools select --cls onlyfa -s sequences.fasta --len 100 -o filtered.fasta
 ```
 
 ### `split-fasta` – 拆分多序列 FASTA 文件
