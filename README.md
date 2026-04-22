@@ -14,7 +14,7 @@
 
 | 命令 | 描述 |
 |------|------|
-| `select` | 从 FASTA 中提取目标行/序列，或按长度过滤 |
+| `select` | 从 `FASTA`或`表格`中提取目标行/序列，多子工具集合，`-h`查看 |
 | `split-fasta` | 将多序列 FASTA 文件拆分为单个文件 |
 | `fasta-stats` | 计算 FASTA 统计信息（GC%、长度等） |
 | `rev-comp` | 生成 DNA 序列的反向互补序列 |
@@ -43,21 +43,21 @@ cargo build --release
 
 三种操作模式：
 
-- **`line`** – 从表格文件中提取与基因 ID 列表匹配的行
-- **`fa`** – 从 FASTA 文件中提取与基因 ID 列表匹配的序列
-- **`onlyfa`** – 按最小长度过滤 FASTA 序列（无需 ID 列表）
+- **`line`** – 从表格文件中提取与基因 ID 列表匹配的行，可`-c`按指定列进行筛选，默认为1;
+- **`fa`** – 从 FASTA 文件中提取与基因 ID 列表匹配的序列;
+- **`onlyfa`** – 按最小长度过滤 FASTA 序列（无需 ID 列表）;
 
 **示例：**
 
 ```bash
 # 从表格中提取行
-myBioTools select -c line -l geneid.txt -s table.txt -o output.txt
+myBioTools select -cls line -l geneid.txt -s table.txt  -o output.txt
 
 # 从 FASTA 中提取序列
-myBioTools select -c fa -l geneid.txt -s sequences.fasta -o selected.fasta
+myBioTools select -cls fa -l geneid.txt -s sequences.fasta -o selected.fasta
 
 # 按长度过滤 FASTA
-myBioTools select -c onlyfa -s sequences.fasta --len 100 -o filtered.fasta
+myBioTools select -cls onlyfa -s sequences.fasta --len 100 -o filtered.fasta
 ```
 
 ### `split-fasta` – 拆分多序列 FASTA 文件
