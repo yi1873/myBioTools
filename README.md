@@ -25,24 +25,18 @@
 
 ## 安装
 
-### 从 crates.io（发布后）
-
-```bash
-cargo install mybiotools
-```
-
 ### 从源码编译
 
 ```bash
-git clone https://github.com/yourusername/myBioTools.git
+git clone https://github.com/yi1873/myBioTools.git
 cd myBioTools
-cargo install --path .
+cargo build --release
 ```
 
 ## 使用
 
 ```bash
-mybiotools [子命令] [选项]
+./target/release/myBioTools  [子命令] [选项]
 ```
 
 ### `select` – 提取或过滤序列
@@ -57,13 +51,13 @@ mybiotools [子命令] [选项]
 
 ```bash
 # 从表格中提取行
-mybiotools select -c line -l geneid.txt -s table.txt -o output.txt
+myBioTools select -c line -l geneid.txt -s table.txt -o output.txt
 
 # 从 FASTA 中提取序列
-mybiotools select -c fa -l geneid.txt -s sequences.fasta -o selected.fasta
+myBioTools select -c fa -l geneid.txt -s sequences.fasta -o selected.fasta
 
 # 按长度过滤 FASTA
-mybiotools select -c onlyfa -s sequences.fasta --len 100 -o filtered.fasta
+myBioTools select -c onlyfa -s sequences.fasta --len 100 -o filtered.fasta
 ```
 
 ### `split-fasta` – 拆分多序列 FASTA 文件
@@ -75,7 +69,7 @@ mybiotools select -c onlyfa -s sequences.fasta --len 100 -o filtered.fasta
 **示例：**
 
 ```bash
-mybiotools split-fasta -i input.fasta -o ./my_split_dir --ext .fa
+myBioTools split-fasta -i input.fasta -o ./my_split_dir --ext .fa
 ```
 
 ### `tm` – 计算熔解温度
@@ -86,7 +80,7 @@ mybiotools split-fasta -i input.fasta -o ./my_split_dir --ext .fa
 **示例：**
 
 ```bash
-mybiotools tm -s "ATCGATCGATCG"
+myBioTools tm -s "ATCGATCGATCG"
 # 输出：Tm = 52.34 °C
 ```
 
@@ -97,7 +91,7 @@ mybiotools tm -s "ATCGATCGATCG"
 **示例：**
 
 ```bash
-mybiotools fasta-stats -i sequences.fasta -o stats.csv
+myBioTools fasta-stats -i sequences.fasta -o stats.csv
 ```
 
 ### `hairpin`、`heterodimer`、`homodimer` – 自由能计算
@@ -108,9 +102,9 @@ mybiotools fasta-stats -i sequences.fasta -o stats.csv
 **示例：**
 
 ```bash
-mybiotools hairpin -s "CCCCGGGG"
-mybiotools heterodimer -s1 "AAAAAA" -s2 "TTTTTT"
-mybiotools homodimer -s "CACACACACA"
+myBioTools hairpin -s "CCCCGGGG"
+myBioTools heterodimer -s1 "AAAAAA" -s2 "TTTTTT"
+myBioTools homodimer -s "CACACACACA"
 ```
 
 ### `rev-comp` – 反向互补序列
@@ -122,11 +116,11 @@ mybiotools homodimer -s "CACACACACA"
 
 ```bash
 # 直接序列输入
-mybiotools rev-comp -i "ATCG"
+myBioTools rev-comp -i "ATCG"
 # 输出：CGAT
 
 # FASTA 文件输入
-mybiotools rev-comp --input-file sequences.fasta --output-file rev.fasta
+myBioTools rev-comp --input-file sequences.fasta --output-file rev.fasta
 ```
 
 ## 项目结构
@@ -170,7 +164,7 @@ src/
    cargo build --release
    ```
 
-二进制文件位于 `target/release/mybiotools`。
+二进制文件位于 `target/release/myBioTools`。
 
 ## 添加新工具
 
@@ -180,10 +174,6 @@ src/
 4. 在 `src/lib.rs` 中声明模块，并在 `src/main.rs` 中添加子命令枚举变体。
 5. 在 `main.rs` 中添加匹配分支来路由该命令。
 
-## 许可证
 
-MIT – 详见 [LICENSE](LICENSE) 文件。
 
-## 贡献
 
-欢迎贡献！请在 GitHub 上提交 issue 或 pull request。
