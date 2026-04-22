@@ -17,11 +17,11 @@
 | `select` | 从 FASTA 中提取目标行/序列，或按长度过滤 |
 | `split-fasta` | 将多序列 FASTA 文件拆分为单个文件 |
 | `fasta-stats` | 计算 FASTA 统计信息（GC%、长度等） |
-| `hairpin` | 计算发夹形成的自由能 ΔG (kcal/mol) |
-| `heterodimer` | 计算异源二聚体形成的自由能 ΔG (kcal/mol) |
-| `homodimer` | 计算同源二聚体形成的自由能 ΔG (kcal/mol) |
 | `rev-comp` | 生成 DNA 序列的反向互补序列 |
-| `tm` | 计算 DNA 序列的熔解温度 (Tm) |
+| `hairpin` | 计算发夹形成的自由能 ΔG (kcal/mol) 【引物使用】 |
+| `heterodimer` | 计算异源二聚体形成的自由能 ΔG (kcal/mol) 【引物使用】|
+| `homodimer` | 计算同源二聚体形成的自由能 ΔG (kcal/mol)【引物使用】 |
+| `tm` | 计算 DNA 序列的熔解温度 (Tm) 【引物使用】|
 
 ## 安装
 
