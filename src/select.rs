@@ -17,14 +17,14 @@ Modes:
   onlyfa  - Filter FASTA sequences by minimum length (no gene ID list needed)
 
 Examples:
-  mybiotools select -cls line -l geneid.txt -s table.txt -o output.txt
-  mybiotools select -cls fa -l geneid.txt -s sequences.fasta -o selected.fasta
-  mybiotools select -cls onlyfa -s sequences.fasta -len 100 -o filtered.fasta
+  myBioTools select --cls line -l geneid.txt -s table.txt -o output.txt
+  myBioTools select --cls fa -l geneid.txt -s sequences.fasta -o selected.fasta
+  myBioTools select --cls onlyfa -s sequences.fasta -len 100 -o filtered.fasta
 "
 )]
 pub struct SelectArgs {
     /// Operation mode: line, fa, or onlyfa
-    #[arg(short = 'c', long = "cls", value_name = "MODE")]
+    #[arg(long = "cls", value_name = "MODE")]
     pub mode: String,
     
     /// Gene ID list file (required for line and fa modes)
